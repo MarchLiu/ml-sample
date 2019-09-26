@@ -65,4 +65,4 @@
       (println w)
       (if (< w d)
         network
-        (recur (n/learn network eta (vals delta-set)))))))
+        (recur (n/train network eta (vals delta-set)))))))

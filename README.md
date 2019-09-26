@@ -1,10 +1,41 @@
 # ml-samples
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure library show a basic machine learn workflow.
 
 ## Usage
 
-FIXME
+start into repl:
+```shell script
+lein repl
+```
+
+load dataset:
+
+```clojure
+(def dataset (load-all-data))
+```
+load t-values:
+```clojure
+(def t-all (load-t "resources/t.csv"))
+```
+create random network:
+```clojure
+(def network (n/create-network 12 3 2))
+```
+define a eta
+```clojure
+(def eta 0.2)
+```
+train and generate new network, you will see the cost being down to zero:
+```clojure
+(def new-network (learn dataset t-all network eta 0.1))
+```
+test new network:
+```
+(into (sorted-map)
+      (map #(vector (key %) (->> % val last (map :a) n/binary-pair))
+           results))
+```
 
 ## License
 

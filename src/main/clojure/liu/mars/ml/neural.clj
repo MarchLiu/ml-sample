@@ -5,6 +5,7 @@
 ;; 神经元定义为 {:w [权重列表] :b 偏置量}
 ;; 神经元计算结果为 {:z zeta :a alpha :d delta}
 ;; 正值为 t 的向量
+
 (defn create-node
   "以随机的权重和偏移构造神经元单位"
   [prev-count]
