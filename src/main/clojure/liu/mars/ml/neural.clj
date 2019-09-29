@@ -157,7 +157,7 @@
       (update :w #(vec (map - % (:w offset))))
       (update :b - (:b offset))))
 
-(defn layer-walk
+(defn layer-fix
   "根据给定的 offset 层生成修订后的 layer"
   [layer offset]
   (map node-fix layer offset))
@@ -167,7 +167,7 @@
   [network eta deltas]
   (reduce conj
           [(first network)]
-          (map layer-walk
+          (map layer-fix
                (rest network)
                (rest (create-offset eta (map differential deltas))))))
 
