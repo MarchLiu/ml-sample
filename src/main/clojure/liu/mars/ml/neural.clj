@@ -130,7 +130,7 @@
                    (nth result layer-index)
                    (nth result (dec layer-index)))))))))
 
-(defn create-offset
+(defn create-fix
   "根据偏微分结果集和学习率构造出偏移量集合"
   [eta analyze-dataset]
   (let [merge-node (fn [x y]
@@ -169,7 +169,7 @@
           [(first network)]
           (map layer-fix
                (rest network)
-               (rest (create-offset eta (map differential deltas))))))
+               (rest (create-fix eta (map differential deltas))))))
 
 (defn cost
   "计算代价函数的值"
