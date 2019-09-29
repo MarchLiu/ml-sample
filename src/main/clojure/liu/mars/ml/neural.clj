@@ -150,7 +150,7 @@
         merged (reduce merge-couple analyze-dataset)]
     (reduce conj [(first merged)] (map #(vec (map update-node %)) (rest merged)))))
 
-(defn node-walk
+(defn node-fix
   "跟据给定的 offset 数据集生成修正后的 node"
   [node offset]
   (-> node
@@ -160,7 +160,7 @@
 (defn layer-walk
   "根据给定的 offset 层生成修订后的 layer"
   [layer offset]
-  (map node-walk layer offset))
+  (map node-fix layer offset))
 
 (defn train
   "根据 delta 结果集对神经网络进行训练"

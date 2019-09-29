@@ -55,7 +55,7 @@
   (reduce + (for [idx (range 1 65)]
               (n/cost (t-all idx) (deltas idx)))))
 
-(defn learn
+(defn train
   [dataset t-set network eta d]
   (loop [network network]
     (let [delta-set (-> dataset
